@@ -4,6 +4,7 @@ import java.awt.Graphics;
 import java.awt.image.BufferStrategy;
 
 import main.listeners.Keyboard;
+import entity.mob.player.Player;
 import essentials.frameworks.game.GameBase;
 import graphics.Screen;
 
@@ -16,18 +17,22 @@ public class Game extends GameBase {
 
 	Screen screen;
 	Keyboard keys;
+	Player player;
 
 	public Game() {
 		title = "Rizing";
 		width = 250;
 		height = width / 5 * 3;
 		scale = 3;
+		ups = 60;
 		construct(width, height, scale);
 
 		screen = new Screen(width, height);
-
+		screen.setBackground("/skins/backgrounds/shadowbg.png");
 		keys = new Keyboard();
 		addKeyListener(keys);
+
+		player = new Player(keys);
 	}
 
 	@Override
@@ -50,7 +55,11 @@ public class Game extends GameBase {
 		}
 		Graphics g = bs.getDrawGraphics();
 
+		screen.clear();
 		g.drawImage(image, 0, 0, size.width, size.height, null);
+
+		screen.render();
+		player.render(screen);
 
 		g.dispose();
 		bs.show();

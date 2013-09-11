@@ -1,8 +1,16 @@
 package entity;
 
-public class Entity {
+public abstract class Entity {
 
-	public Entity() {
+	public int x, y;
+	protected boolean removed = false;
+
+	
+	public boolean isRemoved() {
+		return removed;
 	}
 
+	public void remove() {
+		removed = true;
+	}
 }

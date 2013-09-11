@@ -11,6 +11,8 @@ public class SpriteSheet {
 	private final int SIZE;
 	private String path;
 
+	public static SpriteSheet shipSheet = new SpriteSheet(96, "/skins/user/ship1.png");
+
 	public SpriteSheet(int size, String path) {
 		SIZE = size;
 		pixels = new int[SIZE * SIZE];
